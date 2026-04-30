@@ -84,7 +84,7 @@ if(i > j) {
     console.log("j is greater");
 }
 
-// Calendar --> Week --> final (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
+
 
 let choice = "a";
 

@@ -43,3 +43,33 @@ let arr = [1, 2, 3, 4, 5, "Nandini"];
 // });
 
 arr.filter(x => typeof x === "number").map(y => y * 2).forEach(abc => console.log("Element after * 2:", abc * 2));
+
+
+// random ,floor,parseIntvalue
+console.log(Math.floor(Math.random() * 100)+1);
+
+let strnum ="30";
+console.log (Number(strnum));
+console.log(String(30));
+
+let val ="0.7";
+console.log(parseInt(val));
+console.log(parseFloat(val));
+
+
+// arry function
+ let colors =["red" , "yellow" ,"blue"];
+ console.log(colors.indexOf("green"));
+ console.log(colors.includes("green"));
+ console.log(colors.length);
+ console.log(colors[3]);
+ console.log(colors[colors.length-1]);
+ colors.push("green");
+ console.log(colors);
+ colors.pop();
+ console.log(colors);
+  colors.unshift("purple");
+ console .log(colors);
+ colors.shift();
+ console.log(colors);
+ console.log(colors.splice(0,1));

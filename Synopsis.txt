@@ -1,4 +1,6 @@
+* * * * ** * * ** * * * * ** * * * ** * ** * ** * * * * * *  
 JAVASCRIPT TRAINING SYNOPSIS (DAY 1 & DAY 2)
+* * ** * ** * ** * ** * ** * * * * ** * * ** * * * * * * * * *
 
 ## 🗓️ Day 1 Summary
 
@@ -15,7 +17,12 @@ On Day 1, we learned the fundamentals of JavaScript. The session focused on unde
 - Functions (basic functions)
 - Basics of HTML forms and buttons creation
 
+# # # # # # # # # # #  # # # #  # #  # #  #  # # #  #  # # #  # #  # # #  # # #   #  # # 
+
 ### Key Learnings:
+
+# # # # # # #  # #  # # # #  # #  #  # #  # # #  # # #  # #  #  # # # #  #  # # #  # #  #
+
 - How to declare and use variables
 - Performing calculations using operators
 - Writing simple loops for iteration
@@ -65,9 +72,50 @@ On Day 2, we continued JavaScript with more advanced concepts and modern syntax.
             let nums = arr.filter(x => typeof x === "number").map(y => y * 2);
             // nums: [2, 4, 6]
 
+-Reduce method
+            Concept: Method that processes an array and reduces it to a single value using a callback function.
+
+            Example:
+            let fruits = ["apple", "banana", "apple","mango","pinneapple","mango","apple"];
+            let count = fruits.reduce((acc, curr) => {
+            acc[curr] = (acc[curr] || 0) + 1;
+            return acc;
+            }, {});
+            console.log(count);
+
+-DOM Manipulation
+              Concept: DOM manipulation is the process of using JavaScript to access and modify HTML elements, content, and styles of a webpage.
+
+-Linking HTML,CSS and JavaScript Files.
+
+-Navigation between pages(using the links).
+
+# # # # # # # # # # # # # # # #  # # #  # # # # # # # # # # #  # # # #  # #  # 
+
 ### Key Learnings:
+
+# # # # # # # # # # # # # # # # # #  ## # # # # # #  # # # # # # # # # # # # #
+
 - Writing concise functions using arrow syntax
+
 - Using template literals for cleaner string formatting:
   ```js
   let name = "Nandini";
   console.log(Hello ${name});
+
+Writing concise functions using arrow syntax
+- Using higher-order functions like:
+  - map() → transform data
+  - filter() → filter data
+  - reduce() → reduce to single value
+  - find() → get specific element
+
+- Understanding DOM manipulation to interact with webpage elements
+
+- Creating and handling forms
+
+- Linking HTML, CSS, and JS files correctly
+
+- Navigating between pages using anchor tags (<a>)  
+
+

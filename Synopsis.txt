@@ -1,0 +1,73 @@
+JAVASCRIPT TRAINING SYNOPSIS (DAY 1 & DAY 2)
+
+## 🗓️ Day 1 Summary
+
+On Day 1, we learned the fundamentals of JavaScript. The session focused on understanding the basics required to start programming.
+
+### Topics Covered:
+- Variables (let, const, var)
+- Data Types
+- Arrays
+- Strings
+- Mathematical Operations
+- Logical Operations
+- Loops (for, while)
+- Functions (basic functions)
+- Basics of HTML forms and buttons creation
+
+### Key Learnings:
+- How to declare and use variables
+- Performing calculations using operators
+- Writing simple loops for iteration
+- Creating and using functions
+- Basic understanding of form elements and button handling
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - -- - - - - - - - - - -
+
+## 🗓️ Day 2 Summary
+
+On Day 2, we continued JavaScript with more advanced concepts and modern syntax.
+
+### Topics Covered:
+- Template Literals
+          Concept: Uses backticks (`) and ${} for cleaner string interpolation.
+
+- Arrow Functions
+          Concept: A shorter syntax for writing concise functions.
+           Example:
+           let sum = (x, y) => x + y;
+           console.log(sum(15, 20)); // 35
+
+- Array Operations 
+          Concept: Array Operations are method used to add,remove, or modify elements in array(push,pop,shift,includes,etc)
+          
+           Example:
+           let colors = ["red", "green", "blue"];
+           colors.push("yellow");    // Add to end
+           colors.shift();           // Remove from start
+           colors.splice(1, 1);      // Remove 1 item at index 1
+           colors.includes("red");   // true
+
+- Math & Type Casting
+          Concept: Handling calculations and converting data between types.
+
+          Example:
+          Math.floor(Math.random() * 100) + 1; // 1–100
+          parseInt("11.6");  // 11
+          parseFloat("11.6"); //11.6
+          Number("5");  
+
+- High order Array methods
+           Concept: Methods like map(), filter(), and find() are higher-order array methods that use a callback function to process and return elements from an array.
+
+            Example:
+            let arr = [1, 2, 3, "Nandini"];
+            let nums = arr.filter(x => typeof x === "number").map(y => y * 2);
+            // nums: [2, 4, 6]
+
+### Key Learnings:
+- Writing concise functions using arrow syntax
+- Using template literals for cleaner string formatting:
+  ```js
+  let name = "Nandini";
+  console.log(Hello ${name});

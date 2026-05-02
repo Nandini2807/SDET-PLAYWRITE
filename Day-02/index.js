@@ -73,3 +73,15 @@ console.log(parseFloat(val));
  colors.shift();
  console.log(colors);
  console.log(colors.splice(0,1));
+
+ //reduce()
+ 
+ let fruits = ["apple", "banana", "apple","mango","pinneapple","mango","apple"];
+
+let count = fruits.reduce((acc, curr) => {
+  acc[curr] = (acc[curr] || 0) + 1;
+  return acc;
+}, {});
+
+console.log(count);
+

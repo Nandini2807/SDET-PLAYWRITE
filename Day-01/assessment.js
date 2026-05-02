@@ -21,6 +21,10 @@ function checkType(input){
     }
 }
 
+checkType(10);
+checkType("nandini");
+checkType(true);
+
 
 //Q3
 let fullName = "John Doe";

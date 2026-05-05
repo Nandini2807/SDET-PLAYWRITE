@@ -21,8 +21,6 @@ On Day 1, we learned the fundamentals of JavaScript. The session focused on unde
 
 ### Key Learnings:
 
-# # # # # # #  # #  # # # #  # #  #  # #  # # #  # # #  # #  #  # # # #  #  # # #  # #  #
-
 - How to declare and use variables
 - Performing calculations using operators
 - Writing simple loops for iteration
@@ -36,16 +34,16 @@ On Day 1, we learned the fundamentals of JavaScript. The session focused on unde
 On Day 2, we continued JavaScript with more advanced concepts and modern syntax.
 
 ### Topics Covered:
-- Template Literals
+1. Template Literals
           Concept: Uses backticks (`) and ${} for cleaner string interpolation.
 
-- Arrow Functions
+2. Arrow Functions
           Concept: A shorter syntax for writing concise functions.
            Example:
            let sum = (x, y) => x + y;
            console.log(sum(15, 20)); // 35
 
-- Array Operations 
+3. Array Operations 
           Concept: Array Operations are method used to add,remove, or modify elements in array(push,pop,shift,includes,etc)
           
            Example:
@@ -55,7 +53,7 @@ On Day 2, we continued JavaScript with more advanced concepts and modern syntax.
            colors.splice(1, 1);      // Remove 1 item at index 1
            colors.includes("red");   // true
 
-- Math & Type Casting
+4. Math & Type Casting
           Concept: Handling calculations and converting data between types.
 
           Example:
@@ -64,7 +62,7 @@ On Day 2, we continued JavaScript with more advanced concepts and modern syntax.
           parseFloat("11.6"); //11.6
           Number("5");  
 
-- High order Array methods
+5. High order Array methods
            Concept: Methods like map(), filter(), and find() are higher-order array methods that use a callback function to process and return elements from an array.
 
             Example:
@@ -72,7 +70,7 @@ On Day 2, we continued JavaScript with more advanced concepts and modern syntax.
             let nums = arr.filter(x => typeof x === "number").map(y => y * 2);
             // nums: [2, 4, 6]
 
--Reduce method
+6. Reduce method
             Concept: Method that processes an array and reduces it to a single value using a callback function.
 
             Example:
@@ -83,7 +81,7 @@ On Day 2, we continued JavaScript with more advanced concepts and modern syntax.
             }, {});
             console.log(count);
 
--DOM Manipulation
+7. DOM Manipulation
               Concept: DOM manipulation is the process of using JavaScript to access and modify HTML elements, content, and styles of a webpage.
 
 -Linking HTML,CSS and JavaScript Files.
@@ -93,8 +91,6 @@ On Day 2, we continued JavaScript with more advanced concepts and modern syntax.
 # # # # # # # # # # # # # # # #  # # #  # # # # # # # # # # #  # # # #  # #  # 
 
 ### Key Learnings:
-
-# # # # # # # # # # # # # # # # # #  ## # # # # # #  # # # # # # # # # # # # #
 
 - Writing concise functions using arrow syntax
 
@@ -119,3 +115,125 @@ Writing concise functions using arrow syntax
 - Navigating between pages using anchor tags (<a>)  
 
 - - - - - - - - - - -- - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - -- - - - - - - - - -
+
+📘 Day 04 Summary: Asynchronous JavaScript
+
+## Objective
+
+To understand how JavaScript handles asynchronous operations using:
+
+Timers (setTimeout, setInterval)
+Callback functions
+Promises
+Async/Await
+
+* * * * * * ** * * * * * * * * * * * * * ** * * * ** * * * * ** * * ** *  *
+
+1. setTimeout:
+        setTimeout() is used to execute a function once after a specific delay.
+
+- Example:
+        setTimeout(() => {
+        console.log("Runs after 2 sec");
+        }, 2000);
+
+- Key Points:
+Delay is in milliseconds
+Executes only once
+Non-blocking (runs in background)
+
+* ** * * * * * * ** * * * ** * * ** * * * * * * ** ** * ** * ** * * ** ** * * * 
+
+2. setInterval:
+        setInterval() runs a function repeatedly after a fixed interval.
+
+- Example:
+        let id = setInterval(() => {
+        console.log("Runs every 1 sec");
+        }, 1000);
+
+- stop interval:
+        clearInterval(id);
+
+
+clearInterval() stops execution
+If used immediately, interval may not run
+ 
+- Better Usage:
+        setTimeout(() => {
+        clearInterval(id);
+        }, 5000);
+
+* * * * * *  * * * * * ** * * * * * ** ** * * ** * * ** * * * ** * * * * * * * ** 
+
+3. Callback Function:
+      A callback is a function passed as an argument to another function and executed later.
+
+- Example:
+     function getData(callback) {
+     setTimeout(() => {
+     console.log("Data fetched");
+     callback();
+     }, 1000);
+     }
+
+     getData(() => console.log("Next step"));
+
+ Output:
+     Data fetched
+     Next step
+
+- Limitation:
+     Can lead to callback hell (nested callbacks)
+
+* * ** * * * ** * ** * * ** * * * * ** * ** * * * * * * ** * * ** * * * * * * * * *
+
+4. Promises:
+     A Promise represents the result of an asynchronous operation.
+
+- States:
+     Pending
+     Resolved
+     Rejected
+
+- Example:
+     let myPromise = new Promise((resolve, reject) => {
+     let success = true;
+
+     if (success) resolve("Success");
+     else reject("Error");
+     });
+
+- Handling:
+myPromise
+    .then(result => console.log(result))
+    .catch(error => console.log(error));
+
+* * * * * * * * * * * * * * * * * * * * * ** ** * * ** * * *** * * * * * * * *  ** * 
+
+5. Async/Await:
+     A modern way to handle promises, making code clean and readable.
+
+- Example:
+     async function run() {
+    try {
+        let result = await myPromise;
+        console.log(result);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+      run();
+
+- Key Learnings:
+     JavaScript handles async tasks without blocking execution
+     Timers help schedule tasks
+     Callbacks are basic async handling
+     Promises improve structure and readability
+     Async/Await makes code simple and professional
+
+* ** * * * * ** * * * * ** * ** * * * * ** * * * * *** * * * ** * * * * *  ** *     
+
+     
+

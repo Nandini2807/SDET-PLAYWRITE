@@ -24,7 +24,6 @@ getBalance() {
 const NandiniAccount = new BankAccount();
 NandiniAccount.deposit(1000);
 NandiniAccount.withdraw(200);
-// NandiniAccount.balance = 10000;
 console.log(`Final Balance: ₹${NandiniAccount.getBalance()}`);
  
 const PriyaAccount = new BankAccount();

@@ -54,7 +54,7 @@ fetch("https://jsonplaceholder.typicode.com/todos")
 // Step 5: error handling
 .catch(err => console.error("Error:", err));
 
-//5
+//5: post
 fetch("https://jsonplaceholder.typicode.com/posts")
     .then(res => res.json())
 

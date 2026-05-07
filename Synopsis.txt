@@ -354,7 +354,7 @@ Point:
       Avoid duplication      
 
 
-🔹 4. Polymorphism:
+4. Polymorphism:
        Polymorphism means same method behaves differently in different classes.
 
 Example:
@@ -383,5 +383,536 @@ Point:
       Same method name → different behavior
 
 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *      
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -     
+
+📘 Day 06 Summary: Practices Question 
+
+# Introduction
+The following concepts were used:
+
+* Array Methods (`map`, `filter`, `sort`)
+* Callback Functions
+* Validation Handling
+* Number Conversion
+* Template Literals
+* `setTimeout()`
+* JSON Formatting
+* Spread Operator
+* Conditional Logic
+
+These concepts are commonly used in:
+
+* API Handling
+* E-commerce Applications
+* Payroll Systems
+* Data Processing Applications
+* Frontend & Backend Development
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Question 1: Flight Booking Data Cleaner
+
+#Problem Statement:
+------------------
+       Raw flight data is provided in string format:
+       "CITY_A-CITY_B:PRICE"
+
+
+The task is to:
+       * Convert strings into objects
+       * Validate prices
+       * Filter flights within a price range
+       * Sort flights
+       * Return JSON string
+
+
+# Code:
+-------
+
+       const rawFlights = [
+  "London-Paris:150",
+  "New York-Tokyo:invalid",
+  "Dubai-Mumbai:450",
+  "Berlin-Rome:95"
+];
+
+function cleanFlightData(flights) {
+
+  const result = flights
+
+    .map(flight => {
+
+      if (!flight || typeof flight !== "string") {
+        return {
+          from: "",
+          to: "",
+          price: 0
+        };
+      }
+
+      const [route, rawPrice] = flight.split(":");
+      const [from, to] = route.split("-");
+
+      let price = Number(rawPrice);
+
+      if (isNaN(price)) {
+        price = 0;
+      }
+
+      return {
+        from: from || "",
+        to: to || "",
+        price
+      };
+    })
+
+    .filter(flight => flight.price >= 100 && flight.price <= 500)
+
+    .sort((a, b) => a.price - b.price);
+
+  return JSON.stringify(result, null, 2);
+}
+console.log(cleanFlightData(rawFlights));
+
+#Explanation:
+-------------
+
+       map(): Used to convert strings into objects.
+       split: Breaks string into smaller parts.
+
+Example:
+       "London-Paris:150"
+
+
+After split:
+       from = "London"
+       to = "Paris"
+       price = "150"
+
+Number(): Converts string into number.
+
+isNaN(): Checks invalid number values.
+
+filter(): Keeps flights with prices between:
+          100 & 500
+
+sort(): Sorts flights from cheapest to highest.
+
+JSON.stringify: Converts JavaScript object into JSON string.
+
+#Final Output:
+-------------
+
+[
+  {
+    "from": "London",
+    "to": "Paris",
+    "price": 150
+  },
+  {
+    "from": "Dubai",
+    "to": "Mumbai",
+    "price": 450
+  }
+]
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+#Question 2: E-Commerce Discount Applicator
+
+#Problem Statement:
+------------------
+
+Create a promo system that:
+
+* Identifies eligible products
+* Applies 10% discount
+* Adds discount status
+* Calculates total savings
+* Uses callback function
+* Uses `setTimeout()`
+
+---
+
+# Code:
+-------
+
+const cart = [
+  { name: "Smartphone", price: 800, category: "Electronics" },
+  { name: "Toaster", price: 50, category: "Home" },
+  { name: "Headphones", price: 250, category: "Electronics" },
+  { name: "Monitor", price: 150, category: "Electronics" }
+];
+
+function isEligible(product) {
+  return (
+    product &&
+    product.category === "Electronics" &&
+    product.price > 200
+  );
+}
+
+function applyPromo(cart, promoCallback) {
+
+  if (!Array.isArray(cart)) {
+    console.log("Invalid cart data");
+    return;
+  }
+
+  let discountedCount = 0;
+  let totalSavings = 0;
+
+  const updatedCart = cart.map(product => {
+
+    if (!product) {
+      return {
+        name: "",
+        price: 0,
+        category: "",
+        isDiscounted: false
+      };
+    }
+
+    if (promoCallback(product)) {
+
+      const discount = product.price * 0.10;
+      discountedCount++;
+      totalSavings += discount;
+
+      return {
+        ...product,
+        price: product.price - discount,
+        isDiscounted: true
+      };
+    }
+
+    return {
+      ...product,
+      isDiscounted: false
+    };
+  });
+
+  console.log(
+    `Promotion applied! ${discountedCount} items were discounted for a total saving of $${totalSavings}.`
+  );
+
+  setTimeout(() => {
+    console.log(updatedCart);
+  }, 1000);
+}
+
+applyPromo(cart, isEligible);
+
+#Explanation:
+-------------
+
+Callback Function:
+        function isEligible(product)
+
+Checks:
+      * Product category is Electronics
+      * Price greater than 200
+
+map():Transforms all products.
+
+Spread Operator:
+       ...product
+       Copies all existing object properties.
+
+Discount Formula:
+       product.price * 0.10
+       Applies 10% discount.
+
+#Template Literal:
+         `${variable}`: Used for dynamic messages.
+
+
+setTimeout(): Simulates delayed server processing.
+              1000ms = 1 second
+
+#Final Output:
+--------------
+
+[
+  {
+    name: "Smartphone",
+    price: 720,
+    category: "Electronics",
+    isDiscounted: true
+  }
+]
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+# Question 3: Movie Stream Analytics
+
+#Problem Statement:
+-------------------
+
+Movie data is provided in string format:
+"MOVIE_NAME|GENRE|VIEW_COUNT"
+
+
+The task is to:
+
+* Convert into objects
+* Validate views
+* Filter Action & Sci-Fi movies
+* Sort by views
+* Return JSON string
+
+#Code:
+------
+
+const rawMovies = [
+  "Inception|Sci-Fi|12000",
+  "The Lion King|Animation|8000",
+  "Mad Max|Action|invalid",
+  "The Matrix|Sci-Fi|15000",
+  "Gladiator|Action|4500"
+];
+
+function analyzeMovies(movies) {
+
+  const result = movies
+
+    .map(movie => {
+
+      if (!movie || typeof movie !== "string") {
+        return {
+          name: "",
+          genre: "",
+          views: 0
+        };
+      }
+
+      const [name, genre, rawViews] = movie.split("|");
+
+      let views = Number(rawViews);
+
+      if (isNaN(views)) {
+        views = 0;
+      }
+
+      return {
+        name: name || "",
+        genre: genre || "",
+        views
+      };
+    })
+
+    .filter(movie =>
+      (movie.genre === "Action" || movie.genre === "Sci-Fi") &&
+      movie.views > 5000
+    )
+
+    .sort((a, b) => b.views - a.views);
+
+  return JSON.stringify(result, null, 2);
+}
+
+console.log(analyzeMovies(rawMovies));
+
+#Explanation:
+-------------
+
+split("|")
+Separates:
+        * Movie Name
+        * Genre
+        * Views
+
+Number(): Converts views into numeric value.
+
+isNaN(): Handles invalid data.
+
+Example:
+        "invalid" → 0
+
+
+filter()
+Keeps only:
+       * Action movies
+       * Sci-Fi movies
+       * Views greater than 5000
+
+Descending Sort:
+b.views - a.views:
+       Shows highest viewed movies first.
+
+#Final Output
+
+
+[
+  {
+    "name": "The Matrix",
+    "genre": "Sci-Fi",
+    "views": 15000
+  },
+  {
+    "name": "Inception",
+    "genre": "Sci-Fi",
+    "views": 12000
+  }
+]
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+#Question 4: Automated Payroll Processor
+
+#Problem Statement:
+-------------------
+
+Create a payroll system that:
+
+* Applies tax deduction
+* Calculates net salary
+* Adds employee status
+* Calculates total payout
+* Uses callback function
+* Uses delayed processing
+
+#Code:
+------
+
+const employees = [
+  { id: 101, name: "Alice", salary: 6000 },
+  { id: 102, name: "Bob", salary: 3500 },
+  { id: 103, name: "Charlie", salary: 5200 }
+];
+
+function taxLogic(salary) {
+
+  if (salary > 5000) {
+    return 0.20;
+  }
+
+  return 0.10;
+}
+
+function calculatePayroll(employees, taxCallback) {
+
+  if (!Array.isArray(employees)) {
+    console.log("Invalid employee data");
+    return;
+  }
+
+  let totalNetPayout = 0;
+
+  const processedEmployees = employees.map(emp => {
+
+    if (!emp) {
+      return {
+        id: 0,
+        name: "",
+        salary: 0,
+        netSalary: 0,
+        status: "Standard"
+      };
+    }
+
+    const taxRate = taxCallback(emp.salary);
+
+    const tax = emp.salary * taxRate;
+
+    const netSalary = emp.salary - tax;
+
+    totalNetPayout += netSalary;
+
+    const status =
+      netSalary > 4000 ? "Premium" : "Standard";
+
+    return {
+      ...emp,
+      tax,
+      netSalary,
+      status
+    };
+  });
+
+  console.log(
+    `Payroll Processed: Total Net Payout is $${totalNetPayout} for ${employees.length} employees.`
+  );
+
+  setTimeout(() => {
+    console.log(processedEmployees);
+  }, 2000);
+}
+
+calculatePayroll(employees, taxLogic);
+
+#Explanation:
+-------------
+
+Callback Function:
+       function taxLogic(salary)
+
+Tax Rules:
+
+| Salary  | Tax |
+| ------- | --- |
+| > 5000  | 20% |
+| <= 5000 | 10% |
+
+
+Tax Calculation:
+       const tax = emp.salary * taxRate;
+
+Net Salary:
+       const netSalary = emp.salary - tax;
+
+Status Logic:
+       netSalary > 4000
+
+
+| Net Salary | Status   |
+| ---------- | -------- |
+| > 4000     | Premium  |
+| <= 4000    | Standard |
+
+Ternary Operator:
+       condition ? trueValue : falseValue
+       Used for status checking.
+
+setTimeout():
+       2000ms = 2 seconds
+       Simulates delayed payroll processing.
+
+
+#Final Output:
+-------------
+
+[
+  {
+    id: 101,
+    name: "Alice",
+    salary: 6000,
+    tax: 1200,
+    netSalary: 4800,
+    status: "Premium"
+  }
+]
+
+#Overall Concepts Learned:
+---------------------------
+
+| Concept            | Purpose                  |
+| ------------------ | ------------------------ |
+| `map()`            | Transform array data     |
+| `filter()`         | Remove unwanted data     |
+| `sort()`           | Arrange data             |
+| Callback Function  | Reusable logic           |
+| `split()`          | Break string data        |
+| `Number()`         | Convert string to number |
+| `isNaN()`          | Validate numbers         |
+| Template Literal   | Dynamic strings          |
+| Spread Operator    | Copy objects             |
+| Ternary Operator   | Short conditional        |
+| `setTimeout()`     | Delayed execution        |
+| `JSON.stringify()` | Convert object to JSON   |
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+
+
 

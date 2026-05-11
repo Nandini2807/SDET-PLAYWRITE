@@ -51,7 +51,7 @@ console.log ("duplicates = ", duplicates);
 
 // 5. Flatten nested arrays manually.
 
-let arr5 = [1, [2, 3], [4, [5, 6]]];
+let arr5 = [1,7 [2, 3], [4, 8 [5, 6]]];
 
 let flat = [];
 
